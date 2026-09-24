@@ -1,2 +1,44 @@
 /* For information on how to create your own theme, please refer to:
 http://ionicframework.com/docs/theming/ */
+
+/* Map Ionic surfaces to the neumorui tokens so every surface shares one background */
+:root {
+  --ion-background-color: var(--neu-bg);
+  --ion-background-color-rgb: 240, 244, 255;
+  --ion-text-color: var(--neu-text-primary);
+  --ion-text-color-rgb: 42, 45, 74;
+  --ion-toolbar-background: var(--neu-bg);
+  --ion-item-background: var(--neu-bg);
+  --ion-card-background: var(--neu-bg);
+  --ion-tab-bar-background: var(--neu-bg);
+  --ion-border-color: transparent;
+  --ion-color-primary: var(--neu-accent);
+  --ion-font-family: var(--neu-font-family);
+}
+
+:root.ion-palette-dark {
+  --ion-background-color: var(--neu-bg);
+  --ion-background-color-rgb: 26, 30, 50;
+  --ion-text-color: var(--neu-text-primary);
+  --ion-text-color-rgb: 224, 228, 250;
+  --ion-toolbar-background: var(--neu-bg);
+  --ion-item-background: var(--neu-bg);
+  --ion-card-background: var(--neu-bg);
+  --ion-tab-bar-background: var(--neu-bg);
+}
+
+/* Flat, borderless toolbars */
+ion-toolbar {
+  --border-width: 0;
+}
+
+ion-header.header-md {
+  box-shadow: none;
+}
+
+/* neumorui's Slider (Radix) doesn't set touch-action, so on touch devices the
+   browser claims the drag as a scroll and cancels it after the first step */
+[data-orientation]:has(> * > [role='slider']),
+[role='slider'] {
+  touch-action: none;
+}

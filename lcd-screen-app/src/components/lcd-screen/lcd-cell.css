@@ -1,0 +1,16 @@
+.lcd-cell {
+  display: block;
+  height: 31px;
+  width: auto;
+  min-width: 14px;
+
+  .lcd-cell-off {
+    fill: var(--lcd-pixel-off);
+    transition: fill 0.15s;
+  }
+
+  .lcd-cell-on {
+    fill: var(--lcd-pixel-on);
+    transition: fill 0.15s;
+  }
+}
