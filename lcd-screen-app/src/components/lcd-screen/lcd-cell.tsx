@@ -11,9 +11,9 @@ const isLight = (hex: string) => {
 };
 
 function lcdColors(color: string, contrast: number) {
-  const k = contrast / 100
-  const inkStrength = Math.min(1, k * 2) * 100             // characters fade below 50
-  const ghost = 8 + Math.max(0, k - 0.5) * 2 * 60          // off pixels show as boxes above 50 (8% → 68%)
+  const k = 1 - contrast / 100                             // visibility: 1 at contrast 0, 0 at contrast 100
+  const inkStrength = Math.min(1, k * 2) * 100             // characters fade above 50, invisible at 100
+  const ghost = 8 + Math.max(0, k - 0.5) * 2 * 60          // off pixels show as boxes below 50 (8% → 68%)
   const ink = isLight(color) ? '#1b1f3a' : '#f4f6ff'
 
   return {
