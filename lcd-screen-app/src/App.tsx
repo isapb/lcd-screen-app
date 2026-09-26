@@ -1,7 +1,9 @@
 import { Navigate, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { NeuProvider } from 'neumorui';
 import Home from './pages/Home';
+import IonicThemeSync from './theme/IonicThemeSync';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,8 +29,12 @@ import '@ionic/react/css/display.css';
  */
 
 /* import '@ionic/react/css/palettes/dark.always.css'; */
-/* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
+/* import '@ionic/react/css/palettes/dark.system.css'; */
+/* neumorui owns the theme; IonicThemeSync toggles the class */
+import '@ionic/react/css/palettes/dark.class.css';
+
+/* Neumorphic component styles */
+import 'neumorui/styles';
 
 /* Theme variables */
 import './theme/variables.css';
@@ -36,14 +42,17 @@ import './theme/variables.css';
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Navigate to="/home" replace />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
+  <NeuProvider followSystemTheme defaultAccent="violet">
+    <IonicThemeSync />
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  </NeuProvider>
 );
 
 export default App;
