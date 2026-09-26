@@ -286,13 +286,13 @@ void loop() {
 
       lcd.setCursor(0, 0);
       lcd.print("BRT ");
-      uint8_t c = map(contrast, 0, 255, 0, 100);
+      uint8_t c = map(brightness, 0, 255, 0, 100);
       lcd.print(c);
       lcd.print("%  ");
 
       lcd.setCursor(0, 1);
       lcd.print("CON ");
-      uint8_t b = map(brightness, 0, 255, 0, 100);
+      uint8_t b = map(contrast, 0, 255, 0, 100);
       lcd.print(b);
       lcd.print("%  ");
       break;
